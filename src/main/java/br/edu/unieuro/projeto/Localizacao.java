@@ -1,9 +1,26 @@
 package br.edu.unieuro.projeto;
 
+import java.util.Random;
+
 public class Localizacao {
 
     private double latitude;
     private double longitude;
+
+    public Localizacao() {
+    }
+
+    public Localizacao(double latitude, double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public static Localizacao getInstance(Endereco endereco) {
+        Random random = new Random();
+        double latitude = Math.random() * random.nextInt(90);
+        double longitude = Math.random() * random.nextInt(180);
+        return new Localizacao(random.nextInt(2) == 1 ? latitude : -latitude, random.nextInt(2) == 1 ? longitude : -longitude);
+    }
 
     public double getLatitude() {
         return latitude;
