@@ -5,16 +5,17 @@ import java.util.Scanner;
 
 public class Endereco {
 
+    static Scanner add = new Scanner(System.in);
+
     private String rua;
     private int numero;
     private String complemento;
     private String cidade;
     private String estado;
     private String cep;
-    static Scanner add = new Scanner(System.in);
-   
 
-    public static void cadastroEndereco(){
+
+    public static Endereco cadastroEndereco() {
         Endereco endereco = new Endereco();
 
         System.out.println("Insira a rua: ");
@@ -30,6 +31,7 @@ public class Endereco {
         System.out.println("CEP: ");
         endereco.setCep(add.nextLine());
 
+        return endereco;
     }
 
     public String getRua() {

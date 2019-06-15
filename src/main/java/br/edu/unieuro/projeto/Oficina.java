@@ -1,30 +1,38 @@
 package br.edu.unieuro.projeto;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Oficina {
+
+    private static Scanner cadastro = new Scanner(System.in);
+    private static ArrayList<Oficina> oficinas = new ArrayList<>();
 
     private long id;
     private String nome;
     private String telefone;
-    static Scanner cadastro = new Scanner(System.in);
-    Endereco endereco = new Endereco();
-    
+    private Endereco endereco;
+    private Localizacao localizacao;
+
     public static void cadastroOficina() {
         Oficina oficina = new Oficina();
-        
+
         System.out.println("**CADASTRO OFICENA**");
-        System.out.println("ID: ");
-        oficina.setId(cadastro.nextLong());
+        oficina.setId(getProximoId());
         System.out.println("Nome da oficina: ");
         oficina.setNome(cadastro.nextLine());
         System.out.println("Telefone: ");
         oficina.setTelefone(cadastro.nextLine());
-        Endereco.cadastroEndereco();
-        
-        
-      
-        
+        oficina.setEndereco(Endereco.cadastroEndereco());
+        oficina.setLocalizacao(Localizacao.getNovaInstacia(oficina.getEndereco()));
+
+        oficinas.add(getProximoId(), oficina);
+
+    }
+
+    private static int getProximoId() {
+        return oficinas.size();
     }
 
     public long getId() {
@@ -51,4 +59,19 @@ public class Oficina {
         this.telefone = telefone;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Localizacao getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(Localizacao localizacao) {
+        this.localizacao = localizacao;
+    }
 }
