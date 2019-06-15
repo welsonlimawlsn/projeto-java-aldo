@@ -15,7 +15,7 @@ public class Localizacao {
         this.longitude = longitude;
     }
 
-    public static Localizacao getInstance(Endereco endereco) {
+    public static Localizacao getNovaInstacia(Endereco endereco) {
         Random random = new Random();
         double latitude = Math.random() * random.nextInt(90);
         double longitude = Math.random() * random.nextInt(180);
