@@ -1,6 +1,6 @@
 package br.edu.unieuro.projeto;
 
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class Endereco {
@@ -13,7 +13,7 @@ public class Endereco {
     private String cep;
     static Scanner add = new Scanner(System.in);
    
-static ArrayList <Endereco> enderecos = new ArrayList<>();
+
     public static void cadastroEndereco(){
         Endereco endereco = new Endereco();
 
