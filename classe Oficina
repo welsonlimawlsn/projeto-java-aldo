@@ -1,0 +1,54 @@
+package br.edu.unieuro.projeto;
+
+
+import java.util.Scanner;
+public class Oficina {
+
+    private long id;
+    private String nome;
+    private String telefone;
+    static Scanner cadastro = new Scanner(System.in);
+    Endereco endereco = new Endereco();
+    
+    public static void cadastroOficina() {
+        Oficina oficina = new Oficina();
+        
+        System.out.println("**CADASTRO OFICENA**");
+        System.out.println("ID: ");
+        oficina.setId(cadastro.nextLong());
+        System.out.println("Nome da oficina: ");
+        oficina.setNome(cadastro.nextLine());
+        System.out.println("Telefone: ");
+        oficina.setTelefone(cadastro.nextLine());
+        Endereco.cadastroEndereco();
+        
+        
+      
+        
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+}
