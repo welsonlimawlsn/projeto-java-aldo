@@ -43,7 +43,7 @@ public class Usuario {
         System.out.println("Digite a senha: ");
         String senha = ler.nextLine();
         for (Usuario u : usuarios) {
-            if (u.getEmail().equals(email) && u.getSenha().equals(senha)) {
+            if (u != null && u.getEmail().equals(email) && u.getSenha().equals(senha)) {
                 usuarioLogado = u;
                 return true;
             }

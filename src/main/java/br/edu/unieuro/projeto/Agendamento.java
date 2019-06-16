@@ -62,6 +62,12 @@ public class Agendamento {
         }
     }
 
+    private static void imprimirAgendamentoUsuarioLogado() {
+        agendamentos.stream()
+                .filter(agendamento -> agendamento != null && agendamento.getUsuario().getId() == Usuario.getUsuarioLogado().getId())
+                .forEach(System.out::println);
+    }
+
     public static void todosAgendamentos() {
         for (Agendamento agendamento : agendamentos) {
             if (agendamento != null && agendamento.getUsuario().getId() == Usuario.getUsuarioLogado().getId()) {
@@ -118,7 +124,7 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "Identificação: " + getId() +
+        return "\nIdentificação: " + getId() +
                 "\nNome da Oficina: " + getOficina().getNome() +
                 "\nData: " + getData().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)) +
                 "\nDescrição: " + getDescricao() + "\n";

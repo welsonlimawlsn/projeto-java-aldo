@@ -2,7 +2,9 @@ package br.edu.unieuro.projeto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Avaliacao {
 
@@ -34,11 +36,23 @@ public class Avaliacao {
     }
 
     public static void imprimeAvaliacoesPorOficina(Oficina oficina) {
-        for (Avaliacao avaliacao : avaliacoes) {
-            if (avaliacao != null && avaliacao.getOficina().getId() == oficina.getId()) {
-                System.out.println(avaliacao);
-            }
-        }
+        getAvaliacoesPorOficina(oficina).forEach(System.out::println);
+    }
+
+    private static List<Avaliacao> getAvaliacoesPorOficina(Oficina oficina) {
+        return avaliacoes.stream()
+                .filter(avaliacao -> avaliacao != null && avaliacao.getOficina().getId() == oficina.getId())
+                .collect(Collectors.toList());
+    }
+
+    public static double getMediaNotaPorOficina(Oficina oficina) {
+        return getAvaliacoesPorOficina(oficina).stream()
+                .mapToInt(Avaliacao::getNota)
+                .average().orElse(0);
+    }
+
+    public void excluir() {
+        avaliacoes.add((int) getId(), null);
     }
 
     private static int getProximoId() {
@@ -99,6 +113,6 @@ public class Avaliacao {
 
     @Override
     public String toString() {
-        return usuario.getNome() + " - " + nota + " - " + comentario;
+        return "/n" + usuario.getNome() + " - " + nota + " - " + comentario;
     }
 }
