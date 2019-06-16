@@ -33,6 +33,14 @@ public class Avaliacao {
         avaliacoes.add(getProximoId(), avaliacao);
     }
 
+    public static void imprimeAvaliacoesPorOficina(Oficina oficina) {
+        for (Avaliacao avaliacao : avaliacoes) {
+            if (avaliacao != null && avaliacao.getOficina().getId() == oficina.getId()) {
+                System.out.println(avaliacao);
+            }
+        }
+    }
+
     private static int getProximoId() {
         return avaliacoes.size();
     }
@@ -87,5 +95,10 @@ public class Avaliacao {
 
     public static ArrayList<Avaliacao> getAvaliacoes() {
         return avaliacoes;
+    }
+
+    @Override
+    public String toString() {
+        return usuario.getNome() + " - " + nota + " - " + comentario;
     }
 }
