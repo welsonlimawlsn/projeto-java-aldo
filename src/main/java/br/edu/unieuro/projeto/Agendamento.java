@@ -11,6 +11,7 @@ public class Agendamento {
 
     private static Scanner scanner = new Scanner(System.in);
 
+    // Variavel estatica para guardar todos os agendamentos
     private static ArrayList<Agendamento> agendamentos = new ArrayList<>();
 
     private long id;
@@ -54,6 +55,7 @@ public class Agendamento {
         System.out.print("Minutos: ");
         int minutos = Integer.parseInt(scanner.nextLine());
 
+        // Caso o usuario infoma uma data invalida, vai lançar uma exceção e é tratada dando uma nova oportunidade ao usuario
         try {
             agendamento.setData(LocalDateTime.of(ano, mes, dia, hora, minutos));
         } catch (DateTimeException e) {
@@ -62,14 +64,9 @@ public class Agendamento {
         }
     }
 
-    private static void imprimirAgendamentoUsuarioLogado() {
-        agendamentos.stream()
-                .filter(agendamento -> agendamento != null && agendamento.getUsuario().getId() == Usuario.getUsuarioLogado().getId())
-                .forEach(System.out::println);
-    }
-
     public static void todosAgendamentos() {
         for (Agendamento agendamento : agendamentos) {
+            // Filtra os agendamentos que estao associados ao usuario logado
             if (agendamento != null && agendamento.getUsuario().getId() == Usuario.getUsuarioLogado().getId()) {
                 System.out.println("////////////////////////////////////////////////////////////");
                 System.out.println(agendamento);
@@ -78,6 +75,7 @@ public class Agendamento {
         }
     }
 
+    // Retorna a proxima posição do ArrayList, para ser usada tambem como id
     public static int getProximoId() {
         return agendamentos.size();
     }

@@ -34,7 +34,8 @@ public class Oficina {
     private static int getProximoId() {
         return oficinas.size();
     }
-    static ArrayList<Oficina> getOficinas(){
+
+    static ArrayList<Oficina> getOficinas() {
         return oficinas;
     }
 
@@ -76,5 +77,13 @@ public class Oficina {
 
     public void setLocalizacao(Localizacao localizacao) {
         this.localizacao = localizacao;
+    }
+
+    public double getNotaMedia() {
+        return Avaliacao.getMediaNotaPorOficina(this);
+    }
+
+    public void imprimiAvaliacoes() {
+        Avaliacao.imprimeAvaliacoesPorOficina(this);
     }
 }

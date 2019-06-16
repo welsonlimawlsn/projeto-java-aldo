@@ -21,7 +21,7 @@ public class Endereco {
         System.out.println("Insira a rua: ");
         endereco.setRua(add.nextLine());
         System.out.println("Número: ");
-        endereco.setNumero(add.nextInt());
+        endereco.setNumero(Integer.parseInt(add.nextLine()));
         System.out.println("Complemento: ");
         endereco.setComplemento(add.nextLine());
         System.out.println("Cidade: ");
@@ -82,4 +82,8 @@ public class Endereco {
         this.cep = cep;
     }
 
+    @Override
+    public String toString() {
+        return getRua() + " " + getNumero() + ", " + getComplemento() + " - " + getCidade() + " - " + getEstado() + " - " + getCep();
+    }
 }

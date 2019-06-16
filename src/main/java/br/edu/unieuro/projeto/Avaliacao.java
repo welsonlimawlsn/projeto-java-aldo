@@ -1,6 +1,8 @@
 package br.edu.unieuro.projeto;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class Avaliacao {
 
+    // Variavel estatica para guardar todos as avaliacoes
     private static ArrayList<Avaliacao> avaliacoes = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
@@ -27,6 +30,7 @@ public class Avaliacao {
         System.out.println("Digite um comentario: ");
         avaliacao.setComentario(scanner.nextLine());
         int nota = 0;
+        // Espera ate que o usuario digite uma nota entre 1 e 5
         do {
             System.out.println("De 1 a 5, em quanto você avalia a" + oficina.getNome() + "?");
             nota = scanner.nextInt();
@@ -40,21 +44,25 @@ public class Avaliacao {
     }
 
     private static List<Avaliacao> getAvaliacoesPorOficina(Oficina oficina) {
+        // Filtra as avaliações que pertence a oficina expecificada pelo paramentro
         return avaliacoes.stream()
                 .filter(avaliacao -> avaliacao != null && avaliacao.getOficina().getId() == oficina.getId())
                 .collect(Collectors.toList());
     }
 
     public static double getMediaNotaPorOficina(Oficina oficina) {
+        // Faz o mapeameto para a nota e calcula a média da oficina especificada pelo parametro
         return getAvaliacoesPorOficina(oficina).stream()
-                .mapToInt(Avaliacao::getNota)
+                .mapToDouble(Avaliacao::getNota)
                 .average().orElse(0);
     }
 
     public void excluir() {
+        //Para realizar a exclussão e nao baguçar os IDs, apenas faz a substutuilção da avaliação por um valor nulo
         avaliacoes.add((int) getId(), null);
     }
 
+    // Retorna a proxima posição do ArrayList, para ser usada tambem como id
     private static int getProximoId() {
         return avaliacoes.size();
     }
@@ -113,6 +121,11 @@ public class Avaliacao {
 
     @Override
     public String toString() {
-        return "/n" + usuario.getNome() + " - " + nota + " - " + comentario;
+        return "\nId: " + id +
+                "\nData: " + data.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)) +
+                "\nComentario: " + comentario +
+                "\nNota: " + nota +
+                "\nOficina: " + oficina.getNome() +
+                '\n';
     }
 }

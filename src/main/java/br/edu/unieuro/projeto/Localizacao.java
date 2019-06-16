@@ -15,6 +15,7 @@ public class Localizacao {
         this.longitude = longitude;
     }
 
+    // Criar uma nota instacia "a partir" do endereço, cria um valor randomico
     public static Localizacao getNovaInstacia(Endereco endereco) {
         Random random = new Random();
         double latitude = Math.random() * random.nextInt(90);
@@ -37,4 +38,5 @@ public class Localizacao {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
+
 }
