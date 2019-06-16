@@ -34,6 +34,9 @@ public class Oficina {
     private static int getProximoId() {
         return oficinas.size();
     }
+    static ArrayList<Oficina> getOficinas(){
+        return oficinas;
+    }
 
     public long getId() {
         return id;

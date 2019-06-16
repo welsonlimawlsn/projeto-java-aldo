@@ -1,6 +1,8 @@
 package br.edu.unieuro.projeto;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Principal {
 
@@ -73,6 +75,16 @@ public class Principal {
             Usuario.getUsuarioLogado().alterarCadastro();
         }
     }
+    private static void menuTres(){
+        System.out.println ("Seja bem vindo ao cadastro de oficinas!!");
+        System.out.println ("1 - Efetuar cadastro");
+        System.out.println ("2 - Ver oficinas");
+        System.out.println ("3 - Ver avaliações");
+        System.out.println ("4 - Sair");
+        
+    
+        }
+    
 
     private static void menuAgendamentos() {
 
@@ -83,6 +95,12 @@ public class Principal {
     }
 
     private static void menuOficina() {
-
+        
+        
+       for(int i = 0;i < Oficina.getOficinas().size();i++){
+           Oficina oficina = Oficina.getOficinas().get(i);
+           System.out.println(oficina.getNome());
+        }
+    controleMenuOficina = ler.nextInt();
     }
 }
