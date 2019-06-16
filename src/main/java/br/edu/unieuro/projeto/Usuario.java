@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Usuario {
+    
+    
 
     private static Scanner ler = new Scanner(System.in);
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -14,6 +16,7 @@ public class Usuario {
     private String sobrenome;
     private String email;
     private String senha;
+    private static Usuario usuarioLogado;
 
     public static void cadastroUsuario() {
 
@@ -33,6 +36,20 @@ public class Usuario {
         usuarios.add(getProximoId(), usuario);
 
     }
+     public static boolean fazerLogin(){
+        ler = new Scanner(System.in);
+        System.out.println("Digite o e-mail: ");
+                String email = ler.nextLine();
+        System.out.println("Digite a senha: ");
+                String senha = ler.nextLine();
+        for(Usuario u:usuarios){
+            if(u.getEmail().equals(email)&&u.getSenha().equals(senha)){
+                usuarioLogado = u;
+                return true;
+           }
+        }
+        return false;
+     }
 
     private static int getProximoId() {
         return usuarios.size();
@@ -43,7 +60,9 @@ public class Usuario {
             System.out.println(usuarios.get(i));
         }
     }
-
+    public static Usuario getUsuarioLogado(){
+         return usuarioLogado;
+    }
     public long getId() {
         return id;
     }
