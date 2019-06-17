@@ -9,7 +9,7 @@ public class Oficina {
     private static Scanner cadastro = new Scanner(System.in);
     private static ArrayList<Oficina> oficinas = new ArrayList<>();
 
-    private long id;
+    private long id;   // criação de atributos tipo private para não serem chamados diretamente por outra classe.
     private String nome;
     private String telefone;
     private Endereco endereco;
@@ -19,7 +19,7 @@ public class Oficina {
         Oficina oficina = new Oficina();
 
         System.out.println("**CADASTRO OFICENA**");
-        oficina.setId(getProximoId());
+        oficina.setId(getProximoId()); //preenchendo a variavel set para quando o método for chamado poder ser acessada.
         System.out.println("Nome da oficina: ");
         oficina.setNome(cadastro.nextLine());
         System.out.println("Telefone: ");
@@ -38,7 +38,7 @@ public class Oficina {
     static ArrayList<Oficina> getOficinas() {
         return oficinas;
     }
-
+// criação dos gets e sets
     public long getId() {
         return id;
     }

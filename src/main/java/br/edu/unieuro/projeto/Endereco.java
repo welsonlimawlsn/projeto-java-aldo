@@ -14,7 +14,9 @@ public class Endereco {
     private String estado;
     private String cep;
 
-
+/*nessa classe não foi criado o ArrayList uma vez que este metodo é chamado em 
+oficina e usuário, as quais possuas suas ArraysLists.*/
+    
     public static Endereco cadastroEndereco() {
         Endereco endereco = new Endereco();
 

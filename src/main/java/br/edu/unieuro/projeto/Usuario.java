@@ -8,7 +8,7 @@ public class Usuario {
     private static Scanner ler = new Scanner(System.in);
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
 
-    private long id;
+    private long id;        //criação dos atributos tipo private para não serem alterados por outra classe
     private String nome;
     private String sobrenome;
     private String email;
@@ -62,7 +62,7 @@ public class Usuario {
     public static Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
-
+//criação dos sets e gets para serem chamados por outros modos
     public long getId() {
         return id;
     }
@@ -110,10 +110,10 @@ public class Usuario {
         return "Usuario{" + "id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email + ", senha=" + senha + '}';
     }
 
-    public void alterarCadastro() {
+    public void alterarCadastro() { //metodo alterar cadastro!
         int opt = 0;
         do {
-            ler = new Scanner(System.in);
+            ler = new Scanner(System.in);                      
             System.out.println("ALTERAÇÃO CADASTRAL");
             System.out.println("1 - Alterar nome:");
             System.out.println("2 - Alterar sobrenome:");
@@ -123,7 +123,7 @@ public class Usuario {
             opt = Integer.parseInt(ler.nextLine());
 
 
-            switch (opt) {
+            switch (opt) { //cada caso vai alterar o que esta na variavel.
                 case 1:
                     System.out.println(getNome());
                     System.out.println("Insira o novo nome: ");
