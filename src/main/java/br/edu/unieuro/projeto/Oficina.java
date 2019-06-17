@@ -17,7 +17,9 @@ public class Oficina {
 
     public static void cadastroOficina() {
         Oficina oficina = new Oficina();
-
+        
+        oficina.setId(getProximoId());
+                
         System.out.println("**CADASTRO OFICENA**");
         oficina.setId(getProximoId());
         System.out.println("Nome da oficina: ");
@@ -31,7 +33,7 @@ public class Oficina {
 
     }
 
-    private static int getProximoId() {
+    static int getProximoId() {
         return oficinas.size();
     }
     static ArrayList<Oficina> getOficinas(){

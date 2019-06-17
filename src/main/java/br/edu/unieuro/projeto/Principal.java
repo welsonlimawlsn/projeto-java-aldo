@@ -99,7 +99,7 @@ public class Principal {
         
        for(int i = 0;i < Oficina.getOficinas().size();i++){
            Oficina oficina = Oficina.getOficinas().get(i);
-           System.out.println(oficina.getNome());
+           System.out.println(oficina.getId()+"-"+oficina.getNome());
         }
     controleMenuOficina = ler.nextInt();
     }

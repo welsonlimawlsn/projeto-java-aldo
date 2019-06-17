@@ -1,11 +1,9 @@
-
 package br.edu.unieuro.projeto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Usuario {
-
 
     private static Scanner ler = new Scanner(System.in);
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -113,8 +111,47 @@ public class Usuario {
     }
 
     public void alterarCadastro() {
+        int opt = 0;
+        do{
+        ler = new Scanner(System.in);
+        System.out.println("ALTERAÇÃO CADASTRAL");
+        System.out.println("1 - Alterar nome:");
+        System.out.println("2 - Alterar sobrenome:");
+        System.out.println("3 - Alterar email");
+        System.out.println("4 - Alterar senha");
+        System.out.println("5 - Sair");
+        opt = ler.nextInt();
 
+        Usuario alteracao = new Usuario();
+
+        switch (opt) {
+            case 1:
+                System.out.println(getNome());
+                System.out.println("Insira o novo nome: ");
+                alteracao.setNome(ler.nextLine());
+                opt = 5;
+
+            case 2:
+                System.out.println(getSobrenome());
+                System.out.println("Insira o novo sobrenome: ");
+                alteracao.setSobrenome(ler.nextLine());
+                break;
+
+            case 3:
+                System.out.println(getEmail());
+                System.out.println("Insira o novo email: ");
+                alteracao.setEmail(ler.nextLine());
+                break;
+
+            case 4:
+                System.out.println(getSenha());
+                System.out.println("Insira a nova senha: ");
+                alteracao.setSenha(ler.nextLine());
+                break;
+
+            case 5:
+                break;
+        }
+        }while (opt < 5);
     }
 }
-
-
